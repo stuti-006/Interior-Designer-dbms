@@ -1,73 +1,228 @@
-# Welcome to your Lovable project
+# 🏠 Interior Design Management System
 
-## Project info
+A full-stack web application to manage interior design projects, clients, employees, materials, and project execution efficiently.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+### 👤 Client Management
 
-**Use Lovable**
+* Add, update, delete, and view client details
+* Store contact and address information
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 👨‍💼 Employee Management
 
-Changes made via Lovable will be committed automatically to this repo.
+* Manage designers, workers, and managers
+* Track salary, experience, and roles
 
-**Use your preferred IDE**
+### 🏗 Project Management
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* Create and manage projects
+* Assign clients to projects
+* Track budget, area, and timelines
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🔗 Project Assignment
 
-Follow these steps:
+* Assign employees to specific projects
+* Define roles/work types per project
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🧱 Material Management
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* Maintain list of materials
+* Track usage of materials per project
 
-# Step 3: Install the necessary dependencies.
-npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🛠 Tech Stack
+
+### Frontend
+
+* React (Vite)
+* TypeScript
+* Tailwind CSS
+* ShadCN UI
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* Supabase (PostgreSQL)
+
+---
+
+## 📂 Project Structure
+
+```
+dbms_pro/
+│
+├── frontend/          # React frontend
+│   ├── src/
+│   └── package.json
+│
+├── backend/           # Express backend
+│   ├── routes/
+│   │   └── api.js
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd dbms_pro
+```
+
+---
+
+### 2️⃣ Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file:
+
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_anon_key
+PORT=5000
+```
+
+Run backend:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3️⃣ Frontend Setup
 
-**Use GitHub Codespaces**
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🌐 API Endpoints
 
-This project is built with:
+### Clients
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* GET `/api/clients`
+* POST `/api/clients`
+* PUT `/api/clients/:id`
+* DELETE `/api/clients/:id`
 
-## How can I deploy this project?
+### Employees
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+* GET `/api/employees`
+* POST `/api/employees`
+* PUT `/api/employees/:id`
+* DELETE `/api/employees/:id`
 
-## Can I connect a custom domain to my Lovable project?
+### Projects
 
-Yes, you can!
+* GET `/api/projects`
+* POST `/api/projects`
+* PUT `/api/projects/:id`
+* DELETE `/api/projects/:id`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Materials
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+* GET `/api/materials`
+* POST `/api/materials`
+
+### Project-Employee
+
+* GET `/api/project-employees`
+
+### Project-Material
+
+* GET `/api/project-materials`
+
+
+## 🗄 Database Schema Overview
+
+### Client
+
+* client_id (PK)
+* name
+* contact
+* address
+
+### Employee
+
+* employee_id (PK)
+* name
+* role
+* salary
+* experience
+* contact
+
+### Project
+
+* project_id (PK)
+* client_id (FK)
+* area_sqft
+* num_rooms
+* design_type
+* budget
+* start_date
+* end_date
+
+### Project_Employee
+
+* project_id (FK)
+* employee_id (FK)
+* work_type
+
+### Material
+
+* material_id (PK)
+* name
+* unit
+
+
+### Project_Material
+
+* project_id (FK)
+* material_id (FK)
+* quantity
+
+---
+
+## ⚠️ Important Notes
+
+* Ensure **Row Level Security (RLS)** is disabled or configured properly in Supabase
+* Table names must match exactly (case-sensitive)
+* Use correct column names (e.g., `client_id`, not `id`)
+
+---
+
+## 📌 Future Improvements
+
+* Authentication & role-based access
+* Dashboard analytics
+* Cost estimation module
+* Notifications system
+
+---
+
+## 👩‍💻 Author
+
+Developed as part of a DBMS project.
+
+---
