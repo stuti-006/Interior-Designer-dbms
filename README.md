@@ -182,6 +182,8 @@ npm run dev
 * budget
 * start_date
 * end_date
+* employee_id (FK)
+* status
 
 ### Project_Employee
 
